@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Apr  7 15:23:45 2016 marc brout
-** Last update Mon Apr 18 20:15:53 2016 marc brout
+** Last update Mon Apr 18 20:41:29 2016 marc brout
 */
 
 #ifndef GENERATE_H_
@@ -50,7 +50,6 @@ typedef struct		s_data
   t_cell		*root;
 }			t_data;
 
-
 /*
 ** misc.c
 */
@@ -59,6 +58,7 @@ void			my_bzero(void *ptr, int size, char c);
 int			my_getnbr(char *str);
 void			my_put_error(const char *str);
 void			my_put_usage(char **av);
+void			free_data(t_data *data);
 
 /*
 ** check_corners.c

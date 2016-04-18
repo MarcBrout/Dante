@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr  8 15:45:04 2016 benjamin duhieu
-## Last update Mon Apr 18 20:16:23 2016 marc brout
+## Last update Mon Apr 18 20:42:16 2016 marc brout
 ##
 
 # USEFUL VARIABLES
@@ -31,6 +31,7 @@ SRC		=	$(GENERATE)generate.c \
 			$(GENERATE)imperfect.c \
 			$(GENERATE)perfect.c \
 			$(GENERATE)init.c \
+			$(GENERATE)free.c \
 
 OBJS    	=	$(SRC:.c=.o)
 

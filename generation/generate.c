@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Apr  7 15:16:35 2016 marc brout
-** Last update Mon Apr 18 20:10:48 2016 marc brout
+** Last update Mon Apr 18 20:40:51 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -94,6 +94,7 @@ int		generate_lab(char **av)
   if ((fd = create_file(av)) < 0 ||
       write_maze_to_file(fd, data.maze))
     return (1);
+  free_data(&data);
   close(fd);
   return (0);
 }
