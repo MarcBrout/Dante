@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr  8 15:45:04 2016 benjamin duhieu
-## Last update Fri Apr 15 18:09:14 2016 marc brout
+## Last update Mon Apr 18 20:16:23 2016 marc brout
 ##
 
 # USEFUL VARIABLES
@@ -20,13 +20,17 @@ ECHO		=	echo -e
 
 # COREWAR VARIABLES
 
-GENERATE	=	mazes/
+GENERATE	=	generation/
 
 SRC		=	$(GENERATE)generate.c \
 			$(GENERATE)errors.c \
 			$(GENERATE)my_bzero.c \
 			$(GENERATE)my_getnbr.c \
 			$(GENERATE)go.c \
+			$(GENERATE)check_corners.c \
+			$(GENERATE)imperfect.c \
+			$(GENERATE)perfect.c \
+			$(GENERATE)init.c \
 
 OBJS    	=	$(SRC:.c=.o)
 
@@ -60,7 +64,7 @@ OBJSLIB		=	$(SRCLIB:.c=.o)
 
 # PROJECT VARIABLES
 
-NAME		=	./mazes/maze
+NAME		=	$(GENERATE)generate
 
 IFLAG		=	-Iinclude/
 
