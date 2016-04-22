@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Apr  7 15:34:59 2016 benjamin duhieu
-** Last update Wed Apr 20 14:54:00 2016 benjamin duhieu
+** Last update Fri Apr 22 14:48:55 2016 benjamin duhieu
 */
 
 #ifndef PARS_H_
@@ -28,6 +28,7 @@ typedef	struct s_case
   char		end;
   char		pass;
   t_posit	pos;
+  char		path;
   struct s_case	*next;
   struct s_case	*prev;
   struct s_link	*link;
@@ -37,6 +38,7 @@ typedef	struct	s_link
 {
   t_case	*cas;
   struct s_link	*next;
+  struct s_link *prev;
 }		t_link;
 
 typedef	struct s_pars
@@ -46,5 +48,30 @@ typedef	struct s_pars
   t_case	*cas;
   /* t_graph	*graph; */
 }		t_pars;
+
+/*
+** pars.c
+*/
+
+int		chk_start_end(t_case *cas);
+int		my_graph(t_case *cas, int length);
+int		pars(char *str, t_case *cas, t_pars *pars);
+
+/*
+** link_direction.c
+*/
+
+int		down_link(t_case *elem, t_case *cas, int length);
+int		left_link(t_case *elem, t_case *cas);
+int		up_link(t_case *elem, t_case *cas, int length);
+int		right_link(t_case *elem, t_case *cas);
+
+/*
+** add_cas_in_list.c
+*/
+
+int		add_cas(t_case *cas, t_posit *pos, int *length, char pas);
+int		add_cas_in_list(char *str, t_case *cas, int *line, int *length);
+int		length_lab(int *length, int *i, t_case *cas, char *str);
 
 #endif /* !PARS_H_ */
