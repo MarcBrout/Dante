@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Apr  7 15:34:59 2016 benjamin duhieu
-** Last update Thu Apr 14 12:36:36 2016 benjamin duhieu
+** Last update Wed Apr 20 15:38:49 2016 marc brout
 */
 
 #ifndef PARS_H_
@@ -20,6 +20,7 @@ typedef	struct s_case
 {
   int		id;
   char		pass;
+  char		path;
   struct s_case	*next;
   struct s_case	*prev;
   struct s_link	*link;
@@ -29,6 +30,7 @@ typedef	struct	s_link
 {
   t_case	*cas;
   struct s_link	*next;
+  struct s_link *prev;
 }		t_link;
 
 typedef	struct s_pars

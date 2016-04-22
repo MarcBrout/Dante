@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Apr  8 16:37:45 2016 benjamin duhieu
-** Last update Thu Apr 14 12:40:28 2016 benjamin duhieu
+** Last update Fri Apr 22 12:51:08 2016 marc brout
 */
 
 #include "lemin.h"
@@ -36,6 +36,7 @@ int		add_cas(t_case *cas, int num, char pas)
   cas->prev = elem;
   elem->id = num;
   elem->pass = pas;
+  elem->path = 0;
 }
 
 int		add_cas_in_list(char *str, t_case *cas, int *line, int *lenght)
@@ -59,7 +60,7 @@ int		add_cas_in_list(char *str, t_case *cas, int *line, int *lenght)
   return (0);
 }
 
-int	lenght_lab(int *lenght, int *i, t_case *cas, char *str))
+int	lenght_lab(int *lenght, int *i, t_case *cas, char *str)
 {
   if (*i == 0)
     {
