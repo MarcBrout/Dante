@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Apr 19 11:08:26 2016 marc brout
-** Last update Fri Apr 22 12:52:04 2016 marc brout
+** Last update Fri Apr 22 12:54:37 2016 marc brout
 */
 
 #include "my.h"
@@ -73,18 +73,18 @@ t_link		*init_pile_root(t_case *first)
   return (root);
 }
 
-int		launch_solve_by_lenght(t_case *first)
+int		launch_solve_by_lenght(t_case *root)
 {
   t_link	*last;
   char		go_back;
 
-  if (!(last = init_pile_root(first->next)))
+  if (!(last = init_pile_root(root->next)))
     return (1);
   go_back = 0;
   while (last)
     {
       last->cas->path = 1;
-      if (last->cas->next == first)
+      if (last->cas->next == root)
 	return (0);
       if (add_to_pile(&go_back, &last))
 	return (1);
@@ -97,14 +97,14 @@ int		launch_solve_by_lenght(t_case *first)
   return (2);
 }
 
-void		write_graph(t_case *first, int width)
+void		write_graph(t_case *root, int width)
 {
   t_case	*cur;
   int		i;
 
-  cur = first;
+  cur = root->next;
   i = 0;
-  while (cur)
+  while (cur != root)
     {
       if (!cur->pass && cur->path)
 	write(1, "o", 1);
@@ -119,14 +119,14 @@ void		write_graph(t_case *first, int width)
     }
 }
 
-int		solve_by_lenght(t_case *first, int width)
+int		solve_by_lenght(t_case *root, int width)
 {
   int		ret;
 
-  if ((ret = launch_solve_by_lenght(first)) == 1)
+  if ((ret = launch_solve_by_lenght(root)) == 1)
     return (1);
   else if (ret == 2)
     return (my_put_error(NO_PATH, 0));
-  write_graph(first, width);
+  write_graph(root, width);
   return (0);
 }
