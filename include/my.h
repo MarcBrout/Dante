@@ -1,3 +1,4 @@
+
 /*
 ** my.h for my in ~/dev/piscine/PJ9/include
 **
@@ -5,7 +6,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Oct  8 11:23:34 2015 marc brout
-** Last update Mon Mar 14 18:55:02 2016 marc brout
+** Last update Fri Apr 22 14:13:22 2016 marc brout
 */
 
 #ifndef MY_H_
@@ -18,6 +19,7 @@
 typedef int (**t_ptrftab)(va_list, char, const char *, int);
 
 t_ptrftab init_myprintf_ftab();
+void my_put_error(char *);
 void my_putchar(char);
 char *my_strdup(char*);
 char *my_revstr(char *);

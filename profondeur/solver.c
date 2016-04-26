@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Apr 19 11:08:26 2016 marc brout
-** Last update Fri Apr 22 12:54:37 2016 marc brout
+** Last update Tue Apr 26 12:58:09 2016 marc brout
 */
 
 #include "my.h"
@@ -97,36 +97,83 @@ int		launch_solve_by_lenght(t_case *root)
   return (2);
 }
 
-void		write_graph(t_case *root, int width)
+int		write_graph(t_case *root, int width, int fd)
 {
   t_case	*cur;
   int		i;
 
-  cur = root->next;
-  i = 0;
-  while (cur != root)
+  cur = root;
+  i = -1;
+  while ((cur = cur->next) && cur != root && ++i >= 0)
     {
       if (!cur->pass && cur->path)
-	write(1, "o", 1);
+	{
+	  if (write(fd, "o", 1) < 1)
+	    return (1);
+	}
       else if (!cur->pass)
-	write(1, "*", 1);
+	{
+	  if (write(fd, "*", 1) < 1)
+	    return (1);
+	}
       else
-	write(1, "X", 1);
+	if (write(fd, "X", 1) < 1)
+	  return (1);
       if (i && !(i % width))
-	write(1, "\n", 1);
-      cur = cur->next;
-      ++i;
+	if (write(1, "\n", 1) < 1)
+	  return (1);
     }
+  return (0);
 }
 
-int		solve_by_lenght(t_case *root, int width)
+char		*concat_str(char *filename, char *add)
+{
+  char		*concat;
+  int		lenfil;
+  int		lenadd;
+  int		i;
+  int		j;
+
+  lenfil = my_strlen(filename);
+  add = my_strlen(add);
+  if (!(concat = malloc(lenfil + add + 1)))
+    return (NULL);
+  my_bzero(concat, lenfil + add + 1, 0);
+  i = -1;
+  j = -1;
+  while (filename[++i])
+    concat[++j] = filename[i];
+  i = -1;
+  while (add[++i])
+    concat[++j] = add[i];
+  return (concat);
+}
+
+int		open_file(char *filename)
+{
+  int		fd;
+
+  if ((fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC,
+		 S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) < 0)
+    return (my_put_error(F_ERROR), -1);
+  return (fd);
+}
+
+int		solve_by_lenght(t_case *root, int width,
+				char *filename)
 {
   int		ret;
+  int		fd;
+  char		*result;
 
+  if (!(result = concat_str(filename, "_solved")))
+    return (1);
   if ((ret = launch_solve_by_lenght(root)) == 1)
     return (1);
   else if (ret == 2)
     return (my_put_error(NO_PATH, 0));
-  write_graph(root, width);
+  if ((fd = open_file(filename)) < 0)
+    return (1);
+  write_graph(root, width, fd);
   return (0);
 }

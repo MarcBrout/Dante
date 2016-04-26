@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Apr  7 15:16:35 2016 marc brout
-** Last update Mon Apr 18 20:40:51 2016 marc brout
+** Last update Tue Apr 26 11:53:50 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -34,7 +34,7 @@ int		create_file(char **av)
 	return (my_put_error(F_ERROR), -1);
       return (fd);
     }
-  if ((fd = open("./maze.txt", O_WRONLY | O_CREAT | O_TRUNC,
+  if ((fd = open("./maze", O_WRONLY | O_CREAT | O_TRUNC,
 		 S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) < 0)
     return (my_put_error(F_ERROR), -1);
   return (fd);

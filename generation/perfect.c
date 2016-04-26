@@ -5,11 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Apr 18 20:02:31 2016 marc brout
-** Last update Mon Apr 18 20:21:53 2016 marc brout
+** Last update Tue Apr 26 13:08:36 2016 marc brout
 */
 
 #include <stdlib.h>
 #include "generate.h"
+#include "my.h"
 
 void		pop_one_cell(t_cell *root, char *go)
 {

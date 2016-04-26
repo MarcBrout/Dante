@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Fri Oct  9 09:57:50 2015 marc brout
-## Last update Thu Mar 17 20:49:36 2016 marc brout
+## Last update Tue Apr 26 13:13:56 2016 marc brout
 ##
 
 SRC	= my_getnbr.c \
@@ -22,6 +22,7 @@ SRC	= my_getnbr.c \
 	my_printfdiouxx.c \
 	my_strdup.c \
 	my_printfmetc.c \
+	my_error.c \
 	get_next_line.c
 
 LIBPATH	= ../

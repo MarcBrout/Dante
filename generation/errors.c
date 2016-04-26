@@ -1,15 +1,14 @@
 /*
-** errors.c for lemin in /home/brout_m/RENDU/CPE/CPE_2015_lemin
+** errors.c for dante in /home/brout_m/RENDU/CPE/dante
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
-** Started on  Fri Apr  1 16:10:59 2016 marc brout
-** Last update Mon Apr 18 20:01:27 2016 marc brout
+** Started on  Tue Apr 26 13:06:36 2016 marc brout
+** Last update Tue Apr 26 13:16:54 2016 marc brout
 */
 
 #include <unistd.h>
-#include "generate.h"
 #include "my.h"
 
 void		my_put_room_str(const char *file,
@@ -29,14 +28,11 @@ int		my_put_file_noaccess(const char *file,
   return (err);
 }
 
-void		my_put_error(const char *str)
-{
-  write(2, str, my_strlen((char *)str));
-}
-
-void		my_put_usage(char **av)
+int		my_put_usage(char **av, int err)
 {
   write(2, "USAGE : ", 8);
   write(2, av[0], my_strlen(av[0]));
-  write(2, " < [WIDTH] [HEIGHT] [opt: filename] [opt: \"loop\"]\n", 52);
+  write(2, " [WIDTH] [HEIGHT] [(optional) LOOP] [(optional) NAME].\n",
+	55);
+  return (err);
 }

@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr  8 15:45:04 2016 benjamin duhieu
-## Last update Mon Apr 18 20:42:16 2016 marc brout
+## Last update Tue Apr 26 13:16:36 2016 marc brout
 ##
 
 # USEFUL VARIABLES
@@ -23,7 +23,6 @@ ECHO		=	echo -e
 GENERATE	=	generation/
 
 SRC		=	$(GENERATE)generate.c \
-			$(GENERATE)errors.c \
 			$(GENERATE)my_bzero.c \
 			$(GENERATE)my_getnbr.c \
 			$(GENERATE)go.c \
@@ -31,6 +30,7 @@ SRC		=	$(GENERATE)generate.c \
 			$(GENERATE)imperfect.c \
 			$(GENERATE)perfect.c \
 			$(GENERATE)init.c \
+			$(GENERATE)errors.c \
 			$(GENERATE)free.c \
 
 OBJS    	=	$(SRC:.c=.o)
@@ -56,6 +56,7 @@ SRCLIB		=	$(LIBPATH)my/get_next_line.c \
 			$(LIBPATH)my/my_strcmp.c \
 			$(LIBPATH)my/my_strdup.c \
 			$(LIBPATH)my/my_strlen.c \
+			$(LIBPATH)my/my_error.c \
 			$(LIBPATH)my/my_strncmp.c \
 
 LDFLAGS		=       -lmy -L$(LIBPATH)

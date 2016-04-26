@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Apr  7 15:23:45 2016 marc brout
-** Last update Mon Apr 18 20:41:29 2016 marc brout
+** Last update Tue Apr 26 13:00:05 2016 marc brout
 */
 
 #ifndef GENERATE_H_
@@ -56,7 +56,6 @@ typedef struct		s_data
 
 void			my_bzero(void *ptr, int size, char c);
 int			my_getnbr(char *str);
-void			my_put_error(const char *str);
 void			my_put_usage(char **av);
 void			free_data(t_data *data);
 
