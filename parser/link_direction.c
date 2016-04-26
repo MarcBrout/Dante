@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Apr 22 14:33:25 2016 benjamin duhieu
-** Last update Fri Apr 22 14:36:08 2016 benjamin duhieu
+** Last update Sat Apr 23 15:07:32 2016 benjamin duhieu
 */
 
 #include "pars.h"
@@ -14,6 +14,7 @@
 int	left_link(t_case *elem, t_case *cas)
 {
   t_case	*left;
+  t_link	*new_elem;
   t_link	*link;
 
   left = elem->prev;
@@ -25,7 +26,15 @@ int	left_link(t_case *elem, t_case *cas)
 	return (my_put_error(MALLOC_ERR), 1);
       link->next = NULL;
       link->cas = left;
-      elem->link = link;
+      if (elem->link)
+	{
+	  new_elem = elem->link;
+	  while (new_elem->next)
+	    new_elem = new_elem->next;
+	  new_elem->next = link;
+	}
+      else
+	elem->link = link;
     }
   return (0);
 }
@@ -33,6 +42,7 @@ int	left_link(t_case *elem, t_case *cas)
 int		right_link(t_case *elem, t_case *cas)
 {
   t_case	*right;
+  t_link	*new_elem;
   t_link	*link;
 
   right = elem->next;
@@ -44,57 +54,69 @@ int		right_link(t_case *elem, t_case *cas)
 	return (my_put_error(MALLOC_ERR), 1);
       link->next = NULL;
       link->cas = right;
-      elem->link = link;
+      if (elem->link)
+	{
+	  new_elem = elem->link;
+	  while (new_elem->next)
+	    new_elem = new_elem->next;
+	  new_elem->next = link;
+	}
+      else
+	elem->link = link;
     }
   return (0);
 }
 
 int		up_link(t_case *elem, t_case *cas, int length)
 {
-  int		i;
+  t_link	*new_elem;
   t_case	*up;
   t_link	*link;
 
-  up = elem;
-  i = -1;
-  while (++i < length)
-    {
-      up = elem->prev;
-      if (up == cas)
-	return (0);
-    }
+  if (!(up = move_up(elem, cas, length)))
+    return (0);
   if (!up->pass)
     {
       if (!(link = malloc(sizeof(t_link))))
 	return (my_put_error(MALLOC_ERR), 1);
       link->next = NULL;
       link->cas = up;
-      elem->link = link;
+      if (elem->link)
+	{
+	  new_elem = elem->link;
+	  while (new_elem->next)
+	    new_elem = new_elem->next;
+	  new_elem->next = link;
+	}
+      else
+	elem->link = link;
     }
   return (0);
 }
 
 int		down_link(t_case *elem, t_case *cas, int length)
 {
-  int		i;
+  t_link	*new_elem;
   t_case	*down;
   t_link	*link;
 
-  down = elem;
-  i = -1;
-  while (++i < length)
-    {
-      down = elem->next;
-      if (down == cas)
-	return (0);
-    }
+  if (!(down = move_down(elem, cas, length)))
+    return (0);
   if (!down->pass)
     {
       if (!(link = malloc(sizeof(t_link))))
 	return (my_put_error(MALLOC_ERR), 1);
       link->next = NULL;
       link->cas = down;
-      elem->link = link;
+      if (elem->link)
+	{
+	  new_elem = elem->link;
+	  while (new_elem->next)
+	    new_elem = new_elem->next;
+	  new_elem->next = link;
+	}
+      else
+	elem->link = link;
     }
   return (0);
 }

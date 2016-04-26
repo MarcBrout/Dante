@@ -5,11 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Apr 18 20:08:22 2016 marc brout
-** Last update Mon Apr 18 20:16:43 2016 marc brout
+** Last update Fri Apr 22 16:11:36 2016 benjamin duhieu
 */
 
 #include <stdlib.h>
 #include "generate.h"
+#include "my.h"
 
 char	**generation(int width, int height)
 {

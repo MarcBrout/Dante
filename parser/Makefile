@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr 22 15:00:17 2016 benjamin duhieu
-## Last update Fri Apr 22 15:17:18 2016 benjamin duhieu
+## Last update Sat Apr 23 15:08:39 2016 benjamin duhieu
 ##
 
 # USEFUL VARIABLES
@@ -24,7 +24,8 @@ PARS	=	./
 
 SRC		=	$(PARS)pars.c \
 			$(PARS)link_direction.c \
-			$(PARS)add_cas_in_list.c \
+			$(PARS)move_in_list.c \
+			$(PARS)add_cas_list.c \
 
 OBJS    	=	$(SRC:.c=.o)
 
@@ -45,6 +46,7 @@ SRCLIB		=	$(LIBPATH)my/get_next_line.c \
 			$(LIBPATH)my/my_putchar.c \
 			$(LIBPATH)my/my_put_nbr.c \
 			$(LIBPATH)my/my_putstr.c \
+			$(LIBPATH)my/my_put_error.c \
 			$(LIBPATH)my/my_revstr.c \
 			$(LIBPATH)my/my_strcmp.c \
 			$(LIBPATH)my/my_strdup.c \

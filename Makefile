@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr  8 15:45:04 2016 benjamin duhieu
-## Last update Fri Apr 22 15:00:36 2016 benjamin duhieu
+## Last update Fri Apr 22 16:09:56 2016 benjamin duhieu
 ##
 
 # USEFUL VARIABLES
@@ -51,6 +51,7 @@ SRCLIB		=	$(LIBPATH)my/get_next_line.c \
 			$(LIBPATH)my/my_printfmetc.c \
 			$(LIBPATH)my/my_putchar.c \
 			$(LIBPATH)my/my_put_nbr.c \
+			$(LIBPATH)my/my_put_error.c \
 			$(LIBPATH)my/my_putstr.c \
 			$(LIBPATH)my/my_revstr.c \
 			$(LIBPATH)my/my_strcmp.c \

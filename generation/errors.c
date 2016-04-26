@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Apr  1 16:10:59 2016 marc brout
-** Last update Mon Apr 18 20:01:27 2016 marc brout
+** Last update Fri Apr 22 16:10:59 2016 benjamin duhieu
 */
 
 #include <unistd.h>
@@ -27,11 +27,6 @@ int		my_put_file_noaccess(const char *file,
   write(2, file, my_strlen((char *)file));
   write(2, " not accessible\n", 16);
   return (err);
-}
-
-void		my_put_error(const char *str)
-{
-  write(2, str, my_strlen((char *)str));
 }
 
 void		my_put_usage(char **av)
