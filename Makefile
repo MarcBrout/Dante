@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr  8 15:45:04 2016 benjamin duhieu
-## Last update Wed Apr 27 17:17:38 2016 benjamin duhieu
+## Last update Wed Apr 27 19:40:57 2016 benjamin duhieu
 ##
 
 # USEFUL VARIABLES
@@ -27,6 +27,8 @@ PROFON		=	profondeur/solver.c \
 			profondeur/free.c \
 
 LARG		=	largeur/largeur.c \
+			largeur/pile_larg.c \
+			largeur/free_larg.c \
 
 PARSER		=	parser/pars.c \
 			parser/link_direction.c \
