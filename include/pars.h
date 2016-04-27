@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Apr  7 15:34:59 2016 benjamin duhieu
-** Last update Tue Apr 26 13:52:07 2016 marc brout
+** Last update Wed Apr 27 17:01:51 2016 benjamin duhieu
 */
 
 #ifndef PARS_H_
@@ -13,7 +13,7 @@
 
 # define MALLOC_ERR "Can't perform malloc.\n"
 # define LENGTH_ERR "Error: The labyrinth isn't a rectangle.\n"
-# define LAB_ERR "Error: Labyrinth haven't a start or an end.\n"
+# define LAB_ERR "Error: Labyrinth doesn't have a start or an end.\n"
 # define CORR_ERR "Error: Labyrinth is corrupt.\n"
 
 typedef struct s_posit
@@ -39,6 +39,7 @@ typedef	struct	s_link
   t_case	*cas;
   struct s_link	*next;
   struct s_link *prev;
+  struct s_link *back;
 }		t_link;
 
 typedef	struct s_pars
