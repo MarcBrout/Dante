@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Apr 19 11:08:26 2016 marc brout
-** Last update Wed Apr 27 18:49:10 2016 marc brout
+** Last update Wed Apr 27 23:26:42 2016 marc brout
 */
 
 #include <unistd.h>
@@ -41,6 +41,18 @@ static int	write_graph(t_case *root, int width)
   return (0);
 }
 
+static void	roll_back_laby(t_case *root)
+{
+  t_case	*cur;
+
+  cur = root->prev;
+  while (cur != root)
+    {
+      cur->path = 1;
+      cur = cur->back;
+    }
+}
+
 static int	solve_by_astar(t_case *root, int width)
 {
   int		ret;
@@ -49,6 +61,7 @@ static int	solve_by_astar(t_case *root, int width)
     return (1);
   else if (ret == 2)
     return (my_put_error(NO_PATH), 0);
+  roll_back_laby(root);
   return (write_graph(root, width));
 }
 

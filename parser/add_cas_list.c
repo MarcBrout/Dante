@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Apr 22 14:35:14 2016 benjamin duhieu
-** Last update Wed Apr 27 19:29:14 2016 marc brout
+** Last update Wed Apr 27 22:38:58 2016 marc brout
 */
 
 #include "pars.h"
@@ -23,9 +23,10 @@ t_case		*add_cas(t_case *cas, t_posit *pos, int length, char pas)
   cas->prev = elem;
   elem->pos.x = pos->x;
   elem->pos.y = pos->y;
-  elem->s_cost = 0;
-  elem->e_cost = 0;
-  elem->t_cost = 0;
+  elem->pos.s_cost = 0;
+  elem->pos.e_cost = 0;
+  elem->pos.t_cost = 0;
+  elem->pos.calc = 0;
   elem->id = pos->x + (pos->y * length);
   elem->end = 0;
   elem->pass = pas;
