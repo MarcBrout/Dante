@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Apr 22 14:33:25 2016 benjamin duhieu
-** Last update Sat Apr 23 15:07:32 2016 benjamin duhieu
+** Last update Wed Apr 27 15:36:13 2016 marc brout
 */
 
 #include "pars.h"
@@ -18,7 +18,7 @@ int	left_link(t_case *elem, t_case *cas)
   t_link	*link;
 
   left = elem->prev;
-  if (left == cas)
+  if (elem->pos.x == 0 || left == cas)
     return (0);
   if (!left->pass)
     {
@@ -39,14 +39,14 @@ int	left_link(t_case *elem, t_case *cas)
   return (0);
 }
 
-int		right_link(t_case *elem, t_case *cas)
+int		right_link(t_case *elem, t_case *cas, int length)
 {
   t_case	*right;
   t_link	*new_elem;
   t_link	*link;
 
   right = elem->next;
-  if (right == cas)
+  if (elem->pos.x == length || right == cas)
     return (0);
   if (!right->pass)
     {

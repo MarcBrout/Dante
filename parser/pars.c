@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Apr  8 16:37:45 2016 benjamin duhieu
-** Last update Wed Apr 27 14:40:50 2016 marc brout
+** Last update Wed Apr 27 16:28:11 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -35,7 +35,7 @@ t_case		*my_graph(t_case *cas, int length)
 	{
 	  if (left_link(elem, cas))
 	    return (NULL);
-	  if (right_link(elem, cas))
+	  if (right_link(elem, cas, length))
 	    return (NULL);
 	  if (up_link(elem, cas, length))
 	    return (NULL);
@@ -87,8 +87,11 @@ int	pars(char *file, t_case *cas, t_pars *parse)
   i = 0;
   length = 0;
   while ((str = get_next_line(fd)))
-    if (!(cas = length_lab(&length, &i, cas, str)))
-      return (1);
+    {
+      if (!(cas = length_lab(&length, &i, cas, str)))
+	return (1);
+      free(str);
+    }
   parse->width = length;
   parse->height = i;
   cas->prev->end = 1;
@@ -96,7 +99,6 @@ int	pars(char *file, t_case *cas, t_pars *parse)
     return (1);
   if (!(cas = my_graph(cas, length)))
     return (1);
-  chk_graph(cas);
   return (0);
 }
 
