@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Apr  7 15:34:59 2016 benjamin duhieu
-** Last update Wed Apr 27 17:05:40 2016 benjamin duhieu
+** Last update Wed Apr 27 17:46:18 2016 benjamin duhieu
 */
 
 #ifndef PARS_H_
@@ -32,6 +32,7 @@ typedef	struct s_case
   struct s_case	*next;
   struct s_case	*prev;
   struct s_link	*link;
+  struct s_case	*back;
 }		t_case;
 
 typedef	struct	s_link
@@ -39,7 +40,6 @@ typedef	struct	s_link
   t_case	*cas;
   struct s_link	*next;
   struct s_link *prev;
-  struct s_link *back;
 }		t_link;
 
 typedef	struct s_pars

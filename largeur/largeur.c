@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Wed Apr 27 15:22:31 2016 benjamin duhieu
-** Last update Wed Apr 27 17:03:24 2016 benjamin duhieu
+** Last update Wed Apr 27 18:52:51 2016 benjamin duhieu
 */
 
 #include <stdlib.h>
@@ -13,18 +13,18 @@
 #include "larg.h"
 #include "my.h"
 
-int		add_elem_pile(t_cas *cas, t_link *root, t_link *prev)
+int		add_elem_pile(t_case *cas, t_link *root, t_case *prev)
 {
   t_link	*new;
 
-  if (!(new = malloc(sizeof(t_link *))))
+  if (!(new = malloc(sizeof(t_link))))
     return (1);
-  new->back = prev;
   new->next = root;
   new->prev = root->prev;
   root->prev->next = new;
   root->prev = new;
   new->cas = cas;
+  new->cas->back = prev;
   return (0);
 }
 
@@ -35,65 +35,76 @@ void		remove_pile(t_link *cur, t_link *root)
   free(cur);
 }
 
-void		change_graph(t_link *last)
+void		change_graph(t_case *last)
 {
-  t_link	*elem;
+  t_case	*elem;
 
   elem = last;
-  while (elem->back)
+  while (elem)
     {
-      elem->cas->path = 1;
+      elem->path = 1;
       elem = elem->back;
     }
-}
-
-int		chk_id(int id, t_link *pile)
-{
-  t_link	*elem;
-
-  elem = pile->next;
-  while (elem != pile)
-    {
-      if (elem->cas->id == id)
-	return (1);
-      elem = elem-next;
-    }
-  return (0);
 }
 
 int		join_elem_to_pile(t_link *cur, t_link *pile)
 {
   t_link	*elem;
+  int		i;
 
+  cur->cas->path = -1;
   elem = cur->cas->link;
-  while (elem)
+  i = 0;
+  while (elem && (++i))
     {
-      if (chk_id(elem->cas->id, pile))
-	elem = elem->next, continue;
+      if (elem->cas->path == -1)
+	{
+	  elem = elem->next;
+	  continue;
+	}
       else
 	{
-	  if (add_elem_pile(elem->cas, pile, cur))
+	  if (add_elem_pile(elem->cas, pile, cur->cas))
 	    return (1);
 	  if (elem->cas->end)
-	    return (change_graph(elem), 2);
+	      return (2);
 	  elem = elem->next;
 	}
     }
   return (0);
 }
 
-int		my_solv(t_cas *root, t_link *pile)
+void		free_pile(t_link *pile)
+{
+  t_link	*elem;
+  t_link	*tmp;
+
+  elem = pile->next;
+  while (elem != pile)
+    {
+      tmp = elem;
+      elem = elem->next;
+      remove_pile(tmp, pile);
+    }
+  free(elem);
+}
+
+int		my_solv(t_case *root, t_link *pile)
 {
   int		chk;
 
   if (add_elem_pile(root->next, pile, NULL))
     return (my_put_error(MALLOC_ERR), 1);
+  root->next->path = 1;
   while (pile->next != pile)
     {
       if ((chk = join_elem_to_pile(pile->next, pile)) == 1)
 	return (my_put_error(MALLOC_ERR), 1);
       else if (chk == 2)
-	return (0);
+	{
+	  free_pile(pile);
+	  return (change_graph(root->prev), 0);
+	}
       remove_pile(pile->next, pile);
     }
   return (2);
@@ -110,20 +121,21 @@ void		print_my_graph(t_case *root, int length)
     {
       if (elem->pass)
 	my_printf("X");
-      else if (!elem->path)
+      else if (elem->path <= 0)
 	my_printf("*");
       else
 	my_printf("o");
       i++;
-      if (i >= length)
+      if (i >= length + 1)
 	{
 	  my_printf("\n");
 	  i = 0;
 	}
+      elem = elem->next;
     }
 }
 
-int		solv_larg(t_cas	*root, int length)
+int		solv_larg(t_case *root, int length)
 {
   t_link	*pile;
   int		chk;
@@ -149,5 +161,11 @@ int		main(int ac, char **av)
     return (my_put_error(USAGE), 1);
   if (!(parser = recup_graph(av[1])))
     return (1);
-  return (solv_larg(parser->cas, parser->width));
+  if (solv_larg(parser->cas, parser->width))
+    {
+      free(parser);
+      return (1);
+    }
+  free_graph(parser);
+  return (0);
 }
