@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Apr  7 15:16:35 2016 marc brout
-** Last update Tue Apr 26 11:53:50 2016 marc brout
+** Last update Tue Apr 26 14:10:32 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -15,6 +15,8 @@
 #include <time.h>
 #include "generate.h"
 #include "my.h"
+
+unsigned long g_next;
 
 int		create_file(char **av)
 {
@@ -101,7 +103,7 @@ int		generate_lab(char **av)
 
 int	main(int ac, char **av)
 {
-  srand(time(0));
+  g_next = time(0);
   if (ac < 2)
     return (my_put_usage(av), 1);
   if (generate_lab(av))

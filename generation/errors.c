@@ -4,8 +4,8 @@
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
-** Started on  Tue Apr 26 13:06:36 2016 marc brout
-** Last update Tue Apr 26 13:16:54 2016 marc brout
+** Last update Tue Apr 26 13:21:25 2016 marc brout
+** Last update Fri Apr 22 16:10:59 2016 benjamin duhieu
 */
 
 #include <unistd.h>
@@ -28,11 +28,10 @@ int		my_put_file_noaccess(const char *file,
   return (err);
 }
 
-int		my_put_usage(char **av, int err)
+void		my_put_usage(char **av)
 {
   write(2, "USAGE : ", 8);
   write(2, av[0], my_strlen(av[0]));
   write(2, " [WIDTH] [HEIGHT] [(optional) LOOP] [(optional) NAME].\n",
 	55);
-  return (err);
 }

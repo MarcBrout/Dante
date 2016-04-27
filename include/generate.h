@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Apr  7 15:23:45 2016 marc brout
-** Last update Tue Apr 26 13:00:05 2016 marc brout
+** Last update Tue Apr 26 13:19:59 2016 marc brout
 */
 
 #ifndef GENERATE_H_
@@ -19,7 +19,6 @@
 # define F_ERROR "Error while creating file.\n"
 # define WRITE_ERROR "Error while writing maze\n"
 # define GEN_ERROR "Error while generating labyrinthe\n"
-
 
 typedef enum		e_direction
   {

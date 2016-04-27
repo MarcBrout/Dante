@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Apr 15 11:36:07 2016 marc brout
-** Last update Mon Apr 18 20:21:30 2016 marc brout
+** Last update Tue Apr 26 14:13:07 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -114,14 +114,14 @@ int		choose_random_cell(t_data *data, t_cell *cur)
     return (dir);
   else if (!ret)
     return (-1);
-  dir = rand() % 4;
+  dir = my_rand() % 4;
   while (!cur->path[dir] || !data->check[dir](data, cur))
     {
       if (!(ret = count_path(cur, &dir)))
 	return (-1);
       if (ret == 1)
 	continue;
-      dir = rand() % 4;
+      dir = my_rand() % 4;
     }
   return (dir);
 }

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Apr 18 19:56:42 2016 marc brout
-** Last update Mon Apr 18 20:00:45 2016 marc brout
+** Last update Tue Apr 26 14:13:57 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -38,7 +38,7 @@ int		can_i_put_a_star(t_data *data, char **maze,
       x = 0;
       while (maze[y][x])
 	{
-	  if (maze[y][x] == 'X' && !(rand() % 3) &&
+	  if (maze[y][x] == 'X' && !(my_rand() % 3) &&
 	      can_i_put_a_star(data, maze, x, y))
 	    maze[y][x] = '*';
 	  ++x;
