@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Apr 19 11:08:26 2016 marc brout
-** Last update Wed Apr 27 16:48:45 2016 marc brout
+** Last update Wed Apr 27 16:51:32 2016 marc brout
 */
 
 #include <unistd.h>
@@ -73,7 +73,7 @@ int		main(int ac, char **av)
 {
   t_pars	*parser;
 
-  if (ac < 1)
+  if (ac < 2)
     return (my_put_error(USAGE), 1);
   if (!(parser = recup_graph(av[1])))
     return (1);
