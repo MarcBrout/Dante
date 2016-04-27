@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Apr  7 15:34:59 2016 benjamin duhieu
-** Last update Wed Apr 27 16:47:27 2016 marc brout
+** Last update Wed Apr 27 19:26:20 2016 marc brout
 */
 
 #ifndef PARS_H_
@@ -29,6 +29,9 @@ typedef	struct s_case
   char		pass;
   t_posit	pos;
   char		path;
+  unsigned int	s_cost;
+  unsigned int	e_cost;
+  unsigned int	t_cost;
   struct s_case	*next;
   struct s_case	*prev;
   struct s_link	*link;
