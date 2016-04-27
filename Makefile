@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr  8 15:45:04 2016 benjamin duhieu
-## Last update Wed Apr 27 19:40:57 2016 benjamin duhieu
+## Last update Wed Apr 27 23:33:50 2016 marc brout
 ##
 
 # USEFUL VARIABLES
@@ -30,6 +30,10 @@ LARG		=	largeur/largeur.c \
 			largeur/pile_larg.c \
 			largeur/free_larg.c \
 
+ASTA		=	astar/astar.c \
+			astar/calc_dist.c \
+			astar/solver.c \
+
 PARSER		=	parser/pars.c \
 			parser/link_direction.c \
 			parser/move_in_list.c \
@@ -40,9 +44,13 @@ PROFON		+=	$(PARSER)
 
 LARG		+=	$(PARSER)
 
+ASTA		+=	$(PARSER)
+
 OBJLAR		=	$(LARG:.c=.o)
 
 OBJPRO		=	$(PROFON:.c=.o)
+
+OBJAST		=	$(ASTA:.c=.o)
 
 SRC		=	$(GENERATE)generate.c \
 			$(GENERATE)my_bzero.c \
@@ -96,6 +104,8 @@ PROFONDEUR	=	profondeur/solver
 
 LARGEUR		=	largeur/solver
 
+ASTAR		=	astar/solver
+
 IFLAG		=	-Iinclude/
 
 CFLAGS		=	-W -Wall -Wextra
@@ -105,7 +115,7 @@ CC		=	gcc -g $(CFLAGS) $(IFLAG)
 
 # PROJECT RULES
 
-$(NAME)		: 	$(LIB) $(PROFONDEUR) $(LARGEUR) $(OBJS)
+$(NAME)		: 	$(LIB) $(ASTAR) $(PROFONDEUR) $(LARGEUR) $(OBJS)
 			@$(ECHO) "$(GREEN)\n>>>>>>>>>>>>>>>>\n\n> Linking \"$(NAME)\"\n\twith \
 \"$(CC)\"\n\n>>>>>>>>>>>>>>>\t DONE\n$(WHITE)"
 			@$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
@@ -126,6 +136,11 @@ $(LARGEUR)	:	$(OBJLAR)
 			@$(ECHO) "$(GREEN)\n>>>>>>>>>>>>>>>>\n\n> Linking \"$(LARGEUR)\"\n\twith \
 \"$(CC)\"\n\n>>>>>>>>>>>>>>>\t DONE\n$(WHITE)"
 			@$(CC) -o $(LARGEUR) $(OBJLAR) $(LDFLAGS)
+
+$(ASTAR)	:	$(OBJAST)
+			@$(ECHO) "$(GREEN)\n>>>>>>>>>>>>>>>>\n\n> Linking \"$(ASTAR)\"\n\twith \
+\"$(CC)\"\n\n>>>>>>>>>>>>>>>\t DONE\n$(WHITE)"
+			@$(CC) -o $(ASTAR) $(OBJAST) $(LDFLAGS)
 
 all		:	$(NAME)
 

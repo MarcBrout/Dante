@@ -5,10 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Wed Apr 27 18:39:45 2016 marc brout
-** Last update Wed Apr 27 23:26:05 2016 marc brout
+** Last update Wed Apr 27 23:37:37 2016 marc brout
 */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include "my.h"
 #include "astar.h"
 
 t_link		*init_list_root()
@@ -27,13 +28,13 @@ int		add_in_open_list(t_link *root_list, t_link *link)
   t_link	*copy;
   t_link	*cur;
 
-  if (!(copy = malloc(t_link)))
+  if (!(copy = malloc(sizeof(t_link))))
     return (my_put_error(MALLOC_ERR), 1);
   copy->cas = link->cas;
   cur = root_list->next;
   while (cur != root_list)
     {
-      if (cur->t_cost > link->cas->t_cost)
+      if (cur->cas->pos.t_cost > link->cas->pos.t_cost)
 	break;
       cur = cur->next;
     }
@@ -51,7 +52,7 @@ t_link		*is_in_list(t_link *root_list, t_link *link)
   cur = root_list;
   while ((cur = root_list->next) != root_list)
     {
-      if (cur->cas = link->cas)
+      if (cur->cas == link->cas)
 	return (cur);
     }
   return (NULL);
@@ -107,7 +108,7 @@ int		add_all_link_to_lists(t_case *root,
 }
 
 t_link		*pop_from_open_to_closed(t_link *open_l,
-					 t_link *closed_l);
+					 t_link *closed_l)
 {
   t_link	*link;
 
@@ -121,15 +122,13 @@ t_link		*pop_from_open_to_closed(t_link *open_l,
   return (link);
 }
 
-
-
 int		launch_solve_by_astar(t_case *root)
 {
   t_link	*open_l;
   t_link	*closed_l;
   t_link	*cur;
 
-  if (!(open_l = init_list_root() || !(closed_l = init_list_root())))
+  if (!(open_l = init_list_root()) || !(closed_l = init_list_root()))
     return (1);
   if (add_all_link_to_lists(root, open_l, closed_l, root->next))
     return (1);
