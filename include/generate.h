@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Apr  7 15:23:45 2016 marc brout
-** Last update Tue Apr 26 13:19:59 2016 marc brout
+** Last update Wed Apr 27 14:14:57 2016 marc brout
 */
 
 #ifndef GENERATE_H_
@@ -19,6 +19,8 @@
 # define F_ERROR "Error while creating file.\n"
 # define WRITE_ERROR "Error while writing maze\n"
 # define GEN_ERROR "Error while generating labyrinthe\n"
+
+extern unsigned long	g_next;
 
 typedef enum		e_direction
   {
@@ -121,5 +123,11 @@ int			create_file(char **av);
 int			count_path(t_cell *cur, int *dir);
 int			write_maze_to_file(int fd, char **mazes);
 int			generate_lab(char **av);
+
+/*
+** random.c
+*/
+
+int			my_rand();
 
 #endif /* !GENERATE_H_ */

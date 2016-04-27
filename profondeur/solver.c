@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Apr 19 11:08:26 2016 marc brout
-** Last update Wed Apr 27 13:54:01 2016 marc brout
+** Last update Wed Apr 27 14:31:41 2016 marc brout
 */
 
 #include <unistd.h>
@@ -104,7 +104,7 @@ int		write_graph(t_case *root, int width)
   int		i;
 
   cur = root;
-  i = -1;
+  i = 0;
   while ((cur = cur->next) && cur != root && ++i >= 0)
     {
       if (!cur->pass && cur->path)
@@ -120,7 +120,7 @@ int		write_graph(t_case *root, int width)
       else
 	if (write(1, "X", 1) < 1)
 	  return (1);
-      if (i && !(i % width))
+      if (i && !(i % (width + 1)))
 	if (write(1, "\n", 1) < 1)
 	  return (1);
     }
@@ -131,6 +131,7 @@ int		solve_by_lenght(t_case *root, int width)
 {
   int		ret;
 
+  write_graph(root, width);
   if ((ret = launch_solve_by_lenght(root)) == 1)
     return (1);
   else if (ret == 2)

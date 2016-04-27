@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Apr  8 16:37:45 2016 benjamin duhieu
-** Last update Sat Apr 23 15:35:29 2016 benjamin duhieu
+** Last update Wed Apr 27 14:40:50 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -56,14 +56,22 @@ void		chk_graph(t_case *cas)
   elem = cas->next;
   while (elem != cas)
     {
+      my_printf("----------------------\n");
+      my_printf("maillon n°%d : y = %d -- x = %d\n",
+		elem->id, elem->pos.y, elem->pos.x);
       new_elem = elem->link;
       i = 0;
       while (new_elem)
 	{
 	  i++;
+	  my_printf("Link n°%d : y = %d -- x = %d\n",
+		    new_elem->cas->id,
+		    new_elem->cas->pos.y,
+		    new_elem->cas->pos.x);
 	  new_elem = new_elem->next;
 	}
       elem = elem->next;
+      my_printf("----------------------\n");
     }
 }
 
@@ -92,8 +100,12 @@ int	pars(char *file, t_case *cas, t_pars *parse)
   return (0);
 }
 
-t_pars		*recup_graph(t_pars *parse, char *file)
+t_pars		*recup_graph(char *file)
 {
+  t_pars	*parse;
+
+  if (!(parse = malloc(sizeof(t_pars))))
+    return (NULL);
   if (!(parse->cas = malloc(sizeof(t_case))))
     return (NULL);
   parse->cas->next = parse->cas;
