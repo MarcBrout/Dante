@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr  8 15:45:04 2016 benjamin duhieu
-## Last update Wed Apr 27 16:21:47 2016 marc brout
+## Last update Wed Apr 27 17:17:38 2016 benjamin duhieu
 ##
 
 # USEFUL VARIABLES
@@ -26,6 +26,8 @@ PROFON		=	profondeur/solver.c \
 			profondeur/resolution.c \
 			profondeur/free.c \
 
+LARG		=	largeur/largeur.c \
+
 PARSER		=	parser/pars.c \
 			parser/link_direction.c \
 			parser/move_in_list.c \
@@ -33,6 +35,10 @@ PARSER		=	parser/pars.c \
 			parser/free_graph.c \
 
 PROFON		+=	$(PARSER)
+
+LARG		+=	$(PARSER)
+
+OBJLAR		=	$(LARG:.c=.o)
 
 OBJPRO		=	$(PROFON:.c=.o)
 
@@ -86,6 +92,8 @@ NAME		=	$(GENERATE)generate
 
 PROFONDEUR	=	profondeur/solver
 
+LARGEUR		=	largeur/solver
+
 IFLAG		=	-Iinclude/
 
 CFLAGS		=	-W -Wall -Wextra
@@ -95,7 +103,7 @@ CC		=	gcc -g $(CFLAGS) $(IFLAG)
 
 # PROJECT RULES
 
-$(NAME)		: 	$(LIB) $(PROFONDEUR) $(OBJS)
+$(NAME)		: 	$(LIB) $(PROFONDEUR) $(LARGEUR) $(OBJS)
 			@$(ECHO) "$(GREEN)\n>>>>>>>>>>>>>>>>\n\n> Linking \"$(NAME)\"\n\twith \
 \"$(CC)\"\n\n>>>>>>>>>>>>>>>\t DONE\n$(WHITE)"
 			@$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
@@ -112,17 +120,24 @@ $(PROFONDEUR)	:	$(OBJPRO)
 \"$(CC)\"\n\n>>>>>>>>>>>>>>>\t DONE\n$(WHITE)"
 			@$(CC) -o $(PROFONDEUR) $(OBJPRO) $(LDFLAGS)
 
+$(LARGEUR)	:	$(OBJLAR)
+			@$(ECHO) "$(GREEN)\n>>>>>>>>>>>>>>>>\n\n> Linking \"$(LARGEUR)\"\n\twith \
+\"$(CC)\"\n\n>>>>>>>>>>>>>>>\t DONE\n$(WHITE)"
+			@$(CC) -o $(LARGEUR) $(OBJLAR) $(LDFLAGS)
+
 all		:	$(NAME)
 
 clean		:
 			@$(RM) $(OBJS)
 			@$(RM) $(OBJSLIB)
 			@$(RM) $(OBJPRO)
+			@$(RM) $(OBJLAR)
 			@$(ECHO) "$(GREEN)\n> Cleaning repository\t >>>>>>>>>>>>>>> \t DONE\n$(WHITE)"
 
 fclean		: 	clean
 			@$(RM) $(NAME)
 			@$(RM) $(PROFONDEUR)
+			@$(RM) $(LARGEUR)
 			@$(RM) $(LIBPATH)/libmy.a
 			@$(ECHO) "$(GREEN)\n> Cleaning exec\t\t >>>>>>>>>>>>>>> \t DONE\n$(WHITE)"
 
