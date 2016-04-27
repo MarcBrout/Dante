@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Apr  8 16:37:45 2016 benjamin duhieu
-** Last update Sat Apr 23 15:35:29 2016 benjamin duhieu
+** Last update Wed Apr 27 14:51:08 2016 benjamin duhieu
 */
 
 #include <sys/stat.h>
@@ -35,7 +35,7 @@ t_case		*my_graph(t_case *cas, int length)
 	{
 	  if (left_link(elem, cas))
 	    return (NULL);
-	  if (right_link(elem, cas))
+	  if (right_link(elem, cas, length))
 	    return (NULL);
 	  if (up_link(elem, cas, length))
 	    return (NULL);
