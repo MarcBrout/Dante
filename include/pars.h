@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Apr  7 15:34:59 2016 benjamin duhieu
-** Last update Wed Apr 27 17:01:51 2016 benjamin duhieu
+** Last update Wed Apr 27 17:05:40 2016 benjamin duhieu
 */
 
 #ifndef PARS_H_
@@ -65,7 +65,7 @@ t_pars		*recup_graph(char *file);
 int		down_link(t_case *elem, t_case *cas, int length);
 int		left_link(t_case *elem, t_case *cas);
 int		up_link(t_case *elem, t_case *cas, int length);
-int		right_link(t_case *elem, t_case *cas);
+int		right_link(t_case *elem, t_case *cas, int length);
 
 /*
 ** add_cas_in_list.c
@@ -81,5 +81,12 @@ t_case		*length_lab(int *length, int *i, t_case *cas, char *str);
 
 t_case		*move_down(t_case *elem, t_case *cas, int length);
 t_case		*move_up(t_case *elem, t_case *cas, int length);
+
+/*
+** free_graph.c
+*/
+
+void		free_link(t_link *first);
+void		free_graph(t_pars *parser);
 
 #endif /* !PARS_H_ */

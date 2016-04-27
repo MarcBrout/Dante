@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Fri Apr  8 15:45:04 2016 benjamin duhieu
-## Last update Wed Apr 27 13:59:29 2016 marc brout
+## Last update Wed Apr 27 16:21:47 2016 marc brout
 ##
 
 # USEFUL VARIABLES
@@ -23,11 +23,14 @@ ECHO		=	echo -e
 GENERATE	=	generation/
 
 PROFON		=	profondeur/solver.c \
+			profondeur/resolution.c \
+			profondeur/free.c \
 
 PARSER		=	parser/pars.c \
 			parser/link_direction.c \
 			parser/move_in_list.c \
 			parser/add_cas_list.c \
+			parser/free_graph.c \
 
 PROFON		+=	$(PARSER)
 
@@ -43,6 +46,7 @@ SRC		=	$(GENERATE)generate.c \
 			$(GENERATE)init.c \
 			$(GENERATE)errors.c \
 			$(GENERATE)free.c \
+			$(GENERATE)random.c \
 
 OBJS    	=	$(SRC:.c=.o)
 
@@ -106,7 +110,7 @@ $(LIB)		:	$(OBJSLIB)
 $(PROFONDEUR)	:	$(OBJPRO)
 			@$(ECHO) "$(GREEN)\n>>>>>>>>>>>>>>>>\n\n> Linking \"$(PROFONDEUR)\"\n\twith \
 \"$(CC)\"\n\n>>>>>>>>>>>>>>>\t DONE\n$(WHITE)"
-			@$(CC) -o $(NAME) $(OBJPRO) $(LDFLAGS)
+			@$(CC) -o $(PROFONDEUR) $(OBJPRO) $(LDFLAGS)
 
 all		:	$(NAME)
 
