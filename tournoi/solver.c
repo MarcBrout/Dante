@@ -5,12 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Apr 19 11:08:26 2016 marc brout
-** Last update Thu Apr 28 00:22:04 2016 marc brout
+** Last update Thu Apr 28 00:23:51 2016 marc brout
 */
 
 #include <unistd.h>
 #include "my.h"
-#include "astar.h"
+#include "tournoi.h"
 
 static int	write_graph(t_case *root, int width)
 {
@@ -54,12 +54,11 @@ static void	roll_back_laby(t_case *root)
     }
 }
 
-static int	solve_by_astar(t_case *root, int width)
-
+static int	solve_by_tournoi(t_case *root, int width)
 {
   int		ret;
 
-  if ((ret = launch_solve_by_astar(root)) == 1)
+  if ((ret = launch_solve_by_tournoi(root)) == 1)
     return (1);
   else if (ret == 2)
     return (my_put_error(NO_PATH), 0);
@@ -75,7 +74,7 @@ int		main(int ac, char **av)
     return (my_put_error(USAGE), 1);
   if (!(parser = recup_graph(av[1])))
     return (1);
-  if (!solve_by_astar(parser->cas, parser->width))
+  if (!solve_by_tournoi(parser->cas, parser->width))
     {
       free_graph(parser);
       return (0);

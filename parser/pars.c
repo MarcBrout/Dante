@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Apr  8 16:37:45 2016 benjamin duhieu
-** Last update Wed Apr 27 16:28:11 2016 marc brout
+** Last update Thu Apr 28 00:15:34 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -33,11 +33,11 @@ t_case		*my_graph(t_case *cas, int length)
     {
       if (!elem->pass)
 	{
+	  if (up_link(elem, cas, length))
+	    return (NULL);
 	  if (left_link(elem, cas))
 	    return (NULL);
 	  if (right_link(elem, cas, length))
-	    return (NULL);
-	  if (up_link(elem, cas, length))
 	    return (NULL);
 	  if (down_link(elem, cas, length))
 	    return (NULL);
