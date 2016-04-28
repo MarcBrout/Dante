@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Apr 19 11:08:26 2016 marc brout
-** Last update Wed Apr 27 23:26:42 2016 marc brout
+** Last update Wed Apr 27 23:57:20 2016 marc brout
 */
 
 #include <unistd.h>
@@ -46,7 +46,8 @@ static void	roll_back_laby(t_case *root)
   t_case	*cur;
 
   cur = root->prev;
-  while (cur != root)
+  root->next->path = 1;
+  while (cur != root->next)
     {
       cur->path = 1;
       cur = cur->back;

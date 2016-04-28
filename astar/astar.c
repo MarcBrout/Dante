@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Wed Apr 27 18:39:45 2016 marc brout
-** Last update Wed Apr 27 23:37:37 2016 marc brout
+** Last update Wed Apr 27 23:58:22 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -50,7 +50,7 @@ t_link		*is_in_list(t_link *root_list, t_link *link)
   t_link	*cur;
 
   cur = root_list;
-  while ((cur = root_list->next) != root_list)
+  while ((cur = cur->next) != root_list)
     {
       if (cur->cas == link->cas)
 	return (cur);
@@ -132,6 +132,7 @@ int		launch_solve_by_astar(t_case *root)
     return (1);
   if (add_all_link_to_lists(root, open_l, closed_l, root->next))
     return (1);
+  root->next->back = root;
   while (open_l->next)
     {
       cur = pop_from_open_to_closed(open_l, closed_l);
